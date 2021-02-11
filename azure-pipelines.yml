@@ -100,11 +100,11 @@ steps:
 - task: PublishCucumberReport@1
   inputs:
     jsonDir: '$(System.DefaultWorkingDirectory)/target'
-    outputPath: '$(Sytem.DefaultWorkingDirectory)/target'
+    outputPath: '$(Sytem.SourcesDirectory)'
     theme: 'bootstrap'
     reportSuiteAsScenarios: false
     name: 'cucumber'
 - task: publishhtmlreport@1
   inputs:
     htmlType: 'genericHTML'
-    htmlPath: '/target/cucumber-reports/index.html'
+    htmlPath: '$(System.DefaultWorkingDirectory)/target/cucumber-reports/index.html'
