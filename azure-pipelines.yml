@@ -48,18 +48,18 @@ steps:
     TargetFolder: $(Build.ArtifactStagingDirectory)
     CleanTargetFolder: true
     flattenFolders: true    
-- task: Maven@3
-  inputs:
-    mavenPomFile: 'pom.xml'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    goals: 'test $(MAVEN_OPTS_TEST_MUNIT)'
-    sqMavenPluginVersionChoice: 'pom'
-  displayName: Munit Test
+# - task: Maven@3
+#   inputs:
+#     mavenPomFile: 'pom.xml'
+#     publishJUnitResults: true
+#     testResultsFiles: '**/surefire-reports/TEST-*.xml'
+#     mavenOptions: '-Xmx3072m'
+#     javaHomeOption: 'JDKVersion'
+#     jdkVersionOption: '1.8'
+#     jdkArchitectureOption: 'x64'
+#     goals: 'test $(MAVEN_OPTS_TEST_MUNIT)'
+#     sqMavenPluginVersionChoice: 'pom'
+#   displayName: Munit Test
 - task: PublishTestResults@2
   inputs:
     testResultsFiles: '**/TEST-*.xml' 
@@ -87,7 +87,7 @@ steps:
     artifact: 'drop'
 - task: PublishCucumberReport@1
   inputs:
-    jsonDir: '$(System.DefaultWorkingDirectory)/target/'
+    jsonDir: '$(Build.SourcesDirectory)/target/'
     outputPath: ''
     theme: 'bootstrap'
     reportSuiteAsScenarios: true
