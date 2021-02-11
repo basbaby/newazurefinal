@@ -99,7 +99,7 @@ steps:
     versionSpec: 12.x
 - task: PublishCucumberReport@1
   inputs:
-    jsonDir: 'target'
+    jsonDir: 'results'
     outputPath: 'target/cucumber-reports'
     theme: 'bootstrap'
     reportSuiteAsScenarios: false
