@@ -87,7 +87,7 @@ steps:
     artifact: 'drop'
 - task: PublishCucumberReport@1
   inputs:
-    jsonDir: '$(System.DefaultWorkingDirectory)/target/cucumber.json'
+    jsonDir: '$(System.DefaultWorkingDirectory)/target/'
     outputPath: ''
     theme: 'bootstrap'
     reportSuiteAsScenarios: true
