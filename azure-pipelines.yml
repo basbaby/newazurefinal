@@ -104,7 +104,7 @@ steps:
     theme: 'bootstrap'
     reportSuiteAsScenarios: false
     name: 'cucumber'
-- task: publishhtmlreport@1
+- task: PublishBuildArtifacts@1
   inputs:
-    htmlType: 'genericHTML'
-    htmlPath: '$(System.DefaultWorkingDirectory)/target/cucumber-reports'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'new'
