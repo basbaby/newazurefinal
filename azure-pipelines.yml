@@ -99,10 +99,11 @@ steps:
 #     reportSuiteAsScenarios: true
 - task: PublishCucumberReport@1
   inputs:
-    jsonDir: '$(System.DefaultWorkingDirectory)/target/cucumber'
+    jsonDir: '$(System.DefaultWorkingDirectory)/target'
     outputPath: '$(System.DefaultWorkingDirectory)/target/cucumber-reports'
     theme: 'bootstrap'
     reportSuiteAsScenarios: false
+    name: cucumber
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
