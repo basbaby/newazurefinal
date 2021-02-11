@@ -6,6 +6,8 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
+- name: cucumberFile
+  value: $(Build.SourcesDirectory)/target/cucumber.json
 - name: MAVEN_CACHE_FOLDER
   value: $(Pipeline.Workspace)/.m2/repository
 - name: MAVEN_OPTS
@@ -18,6 +20,10 @@ variables:
   value: '-Dmaven.repo.local=$(MAVEN_CACHE_FOLDER)  -s $(muleSettingsFile.secureFilePath) -Dkey=mymulesoft '    
 
 steps:
+- task: NodeTool@0
+  displayName: 'Install Node 12.x'
+  inputs:
+    versionSpec: 12.x
 - task: DownloadSecureFile@1
   name: muleSettingsFile
   displayName: 'Download Mulesoft Settings'
@@ -85,6 +91,12 @@ steps:
   inputs:
     targetPath: $(System.DefaultWorkingDirectory)
     artifact: 'drop'
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+ 
+      echo ${cucumberFile}
 - task: PublishCucumberReport@1
   inputs:
     jsonDir: '$(Build.SourcesDirectory)/target'
