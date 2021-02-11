@@ -15,7 +15,7 @@ variables:
 - name: MAVEN_OPTS_TEST_CUCUMBER
   value: '-Dtestfile=src/test/javarunner.TestRunner.java -Dkey=mymulesoft'
 - name: MAVEN_OPTS_TEST_MUNIT
-  value: '-Dkey=mymulesoft '    
+  value: '-Dmaven.repo.local=$(MAVEN_CACHE_FOLDER)  -s $(muleSettingsFile.secureFilePath) -Dkey=mymulesoft '    
 
 steps:
 - task: DownloadSecureFile@1
@@ -57,7 +57,7 @@ steps:
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '1.8'
     jdkArchitectureOption: 'x64'
-    goals: 'test $(MAVEN_OPTS) $(MAVEN_OPTS_TEST_MUNIT)'
+    goals: 'test $(MAVEN_OPTS_TEST_MUNIT)'
     sqMavenPluginVersionChoice: 'pom'
   displayName: Munit Test
 - task: PublishTestResults@2
