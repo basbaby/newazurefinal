@@ -100,7 +100,7 @@ steps:
 - task: PublishCucumberReport@1
   inputs:
     jsonDir: '$(System.DefaultWorkingDirectory)/target'
-    outputPath: '/target'
+    outputPath: '$(System.DefaultWorkingDirectory)'
     theme: 'bootstrap'
     reportSuiteAsScenarios: false
     name: 'cucumber'
