@@ -91,10 +91,6 @@ steps:
   inputs:
     targetPath: $(System.DefaultWorkingDirectory)
     artifact: 'drop'
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish Artifact: drop'
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
 # - task: PublishCucumberReport@1
 #   inputs:
 #     jsonDir: '$(Build.SourcesDirectory)/target'
