@@ -60,17 +60,17 @@ steps:
 #     goals: 'test $(MAVEN_OPTS_TEST_MUNIT)'
 #     sqMavenPluginVersionChoice: 'pom'
 #   displayName: Munit Test
-- task: PublishTestResults@2
-  inputs:
-    testResultsFiles: '**/TEST-*.xml' 
-    #searchFolder: '$(System.DefaultWorkingDirectory)' # Optional
-    mergeTestResults: true # Optional
-    #failTaskOnFailedTests: false # Optional
-    # testRunTitle: APIOPS-MUNIT
-    #buildPlatform: # Optional
-    #buildConfiguration: # Optional
-    publishRunAttachments: true # Optional 
-  displayName: Munit Publish Report
+# - task: PublishTestResults@2
+#   inputs:
+#     testResultsFiles: '**/TEST-*.xml' 
+#     #searchFolder: '$(System.DefaultWorkingDirectory)' # Optional
+#     mergeTestResults: true # Optional
+#     #failTaskOnFailedTests: false # Optional
+#     # testRunTitle: APIOPS-MUNIT
+#     #buildPlatform: # Optional
+#     #buildConfiguration: # Optional
+#     publishRunAttachments: true # Optional 
+#   displayName: Munit Publish Report
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
@@ -87,7 +87,7 @@ steps:
     artifact: 'drop'
 - task: PublishCucumberReport@1
   inputs:
-    jsonDir: '$(Build.SourcesDirectory)/target/'
-    outputPath: ''
+    jsonDir: '$(Build.SourcesDirectory)/target'
+    outputPath: '$(Build.SourcesDirectory)/target'
     theme: 'bootstrap'
     reportSuiteAsScenarios: true
