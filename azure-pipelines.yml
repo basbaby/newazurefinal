@@ -102,9 +102,13 @@ steps:
     script: |
  
       cat ${cucumberFile}
-- task: PublishCucumberReport@1
+# - task: PublishCucumberReport@1
+#   inputs:
+#     jsonDir: '$(Build.SourcesDirectory)/target'
+#     outputPath: '$(Build.SourcesDirectory)'
+#     theme: 'bootstrap'
+#     reportSuiteAsScenarios: true
+- task: publishhtmlreport@1
   inputs:
-    jsonDir: '$(Build.SourcesDirectory)/target'
-    outputPath: '$(Build.SourcesDirectory)'
-    theme: 'bootstrap'
-    reportSuiteAsScenarios: true
+    htmlType: 'genericHTML'
+    htmlPath: '$(Build.SourcesDirectory)/target/cucumber-reports/index.html'
