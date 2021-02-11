@@ -20,10 +20,6 @@ variables:
   value: '-Dmaven.repo.local=$(MAVEN_CACHE_FOLDER)  -s $(muleSettingsFile.secureFilePath) -Dkey=mymulesoft '    
 
 steps:
-- task: NodeTool@0
-  displayName: 'Install Node 12.x'
-  inputs:
-    versionSpec: 12.x
 - task: DownloadSecureFile@1
   name: muleSettingsFile
   displayName: 'Download Mulesoft Settings'
@@ -97,14 +93,14 @@ steps:
 #     outputPath: '/target'
 #     theme: 'bootstrap'
 #     reportSuiteAsScenarios: true
+- task: NodeTool@0
+  displayName: 'Install Node 12.x'
+  inputs:
+    versionSpec: 12.x
 - task: PublishCucumberReport@1
   inputs:
-    jsonDir: '$(System.DefaultWorkingDirectory)/target'
-    outputPath: '$(System.DefaultWorkingDirectory)/target/cucumber-reports'
+    jsonDir: '$(System.DefaultWorkingDirectory)/drop/target'
+    outputPath: '$(System.DefaultWorkingDirectory)/drop/target/cucumber-reports'
     theme: 'bootstrap'
     reportSuiteAsScenarios: false
     name: cucumber
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'new'
