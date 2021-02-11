@@ -96,7 +96,7 @@ steps:
     targetType: 'inline'
     script: |
  
-      echo ${cucumberFile}
+      cat ${cucumberFile}
 - task: PublishCucumberReport@1
   inputs:
     jsonDir: '$(Build.SourcesDirectory)/target'
