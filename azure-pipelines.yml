@@ -91,13 +91,13 @@ steps:
   inputs:
     targetPath: $(System.DefaultWorkingDirectory)
     artifact: 'drop'
-# - task: PublishCucumberReport@1
-#   inputs:
-#     jsonDir: '$(Build.SourcesDirectory)/target'
-#     outputPath: '$(Build.SourcesDirectory)'
-#     theme: 'bootstrap'
-#     reportSuiteAsScenarios: true
+- task: PublishCucumberReport@1
+  inputs:
+    jsonDir: '$(Build.DefaultWorkingDirectory)/target/cucumber'
+    outputPath: '$(Build.DefaultWorkingDirectory)/target'
+    theme: 'bootstrap'
+    reportSuiteAsScenarios: true
 - task: publishhtmlreport@1
   inputs:
     htmlType: 'genericHTML'
-    htmlPath: '$(Build.SourcesDirectory)/target/cucumber-reports/index.html'
+    htmlPath: '$(Build.DefaultWorkingDirectory)/target/cucumber-reports/index.html'
