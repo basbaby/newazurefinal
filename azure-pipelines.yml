@@ -88,6 +88,6 @@ steps:
 - task: PublishCucumberReport@1
   inputs:
     jsonDir: '$(Build.SourcesDirectory)/target'
-    outputPath: '$(Build.SourcesDirectory)/target'
+    outputPath: '$(Build.SourcesDirectory)'
     theme: 'bootstrap'
     reportSuiteAsScenarios: true
